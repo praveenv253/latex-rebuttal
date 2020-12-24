@@ -1,0 +1,158 @@
+\documentclass{article}
+
+% Preamble ------------------------------------------------------------------ %
+
+\usepackage[utf8]{inputenc}      % allow utf-8 input
+\usepackage[T1]{fontenc}         % use 8-bit T1 fonts
+\usepackage[margin=1in,marginparwidth=0.7in]{geometry}
+\usepackage{lmodern}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{mathalfa}
+
+\usepackage{calc}
+\usepackage{cite}
+\usepackage[dvipsnames]{xcolor}  % xcolor should be imported before tikz or pstricks
+\usepackage[pdftex]{graphicx}
+\usepackage[inline]{enumitem}
+\usepackage{parskip}
+\usepackage{caption}
+\usepackage{subcaption}
+\captionsetup[figure]{textfont=footnotesize,labelfont=footnotesize}
+
+% For left line in custom quote environment
+\usepackage{tikz}
+\usepackage[framemethod=tikz]{mdframed}
+
+% Margin notes with numbering
+\usepackage{marginfix}           % Fix for margin notes exceeding page boundary
+\usepackage{sidenotes}
+
+% hyperref should usually be imported last
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=Black,             % Note that colors with capital letters are
+	urlcolor=NavyBlue,           % dvips colors, which are a shade darker
+	citecolor=Green
+}
+
+% Temporary macros ---------------------------------------------------------- %
+
+\newcommand{\tcr}[1]{\textcolor{Red}{#1}}
+\newcommand{\tcg}[1]{\textcolor{Gray}{#1}}
+\newcommand{\tcb}[1]{\textcolor{RoyalBlue}{#1}}
+
+\newcommand{\response}[1]{\item[\textbf{Response}] #1}
+\newcommand{\indnt}{\-\hspace{24pt}}
+
+\newmdenv[
+	topline=false,
+	bottomline=false,
+	rightline=false,
+	innertopmargin=0pt,
+	innerbottommargin=0pt,
+	skipabove=6pt,
+	skipbelow=0pt
+]{quotn}
+
+\let\todo\sidenote      % Alias so that \todo command name works. If you want to use a different todo package in conjunction with this, comment this line and use \sidenote instead.
+\makeatletter
+\RenewDocumentCommand\sidenotetext{oo+m}{% Required to adjust sidenote fontsize. This is achieved by "scriptsize" below. May be too small in other contexts; use "footnotesize" in that case.
+	\IfNoValueOrEmptyTF{#1}{%
+		\@sidenotes@placemarginal{#2}{\textsuperscript{\{\thesidenote\}}{}~\scriptsize{#3}}%
+		\refstepcounter{sidenote}%
+	}{%
+		\@sidenotes@placemarginal{#2}{\textsuperscript{#1}~#3}%
+	}%
+}
+\RenewDocumentCommand\sidenotemark{o}{% Required to insert {} around the sidenote mark, to distinguish it from footnotes
+	\@sidenotes@multichecker%
+	\IfNoValueOrEmptyTF{#1}{%
+		\@sidenotes@thesidenotemark{\{\thesidenote\}}%
+	}{%
+		\@sidenotes@thesidenotemark{#1}%
+	}%
+	\@sidenotes@multimarker%
+}
+\makeatother
+
+% Title --------------------------------------------------------------------- %
+
+\title{Paper Title\\ Review Responses}
+\author{Author names}
+
+\linespread{1.1} % optional
+
+% Main document ------------------------------------------------------------- %
+
+\begin{document}
+
+\maketitle
+
+% --------------------------------------------------------------------------- %
+\section*{General Comments}
+% --------------------------------------------------------------------------- %
+
+This is a generic template for journal paper rebuttals that have no fixed format. One might start with a section containing general comments explaining the rebuttal format, as shown below.
+
+We are extremely grateful to the Associate Editor and to all reviewers for their careful and thorough reviews, and their very thoughtful comments. Before presenting a point-by-point response to each of the reviewers' comments, we have reproduced the Associate Editor's letter for completeness, following which we respond to some remarks that were common to all reviewers. We then proceed to address each of the reviewers' comments individually.
+\begin{quotn}
+	In an effort to keep this response as self self-contained as possible, we have included several snippets from the paper in this document. These have all been quoted verbatim and have been explicitly demarcated as shown here.
+\end{quotn}
+Furthermore, we have re-numbered all reviewers' comments for the sake of easy referencing. Also, note that we have highlighted \tcb{the particular concerns listed by the Associate Editor in blue}; \tcg{all other reviewer comments are in gray} and all author responses are in black.
+
+% --------------------------------------------------------------------------- %
+\section*{(AE) Associate Editor's Comments}
+% --------------------------------------------------------------------------- %
+
+\tcg{Most comments made by the AE and the reviewers are best shown in grey, to emphasize the review responses in comparison. These must be manually highlighted using \texttt{\textbackslash{}tcg}. Note that paragraphs cannot be broken within \texttt{\textbackslash{}textcolor}, i.e., \texttt{\textbackslash{}tcg}, commands. So each paragraph must use a separate \texttt{\textbackslash{}tcg} command.}
+
+\tcg{AE's general comments...}
+
+\tcg{Specific items the AE might have pointed to:}
+\begin{enumerate}[label=AE.\arabic*,leftmargin=*,topsep=6pt,itemsep=0pt]
+	\item \tcb{In Reviewer 1's report: points 1 and 5--8} (now R1.1a--c, R1.5--8);\todo{It's a good idea to point out the new numbering scheme along with the old.\\ Also note how you can add numbered margin notes using the \texttt{\textbackslash{}todo} command. This can be useful for author discussions.}
+	\item \tcb{In Reviewer 2's report: comments (i), (iv), and (viii)} (now R2.1a--c, R2.4 and R2.8a--d);
+	\item \tcb{In Reviewer 3's report: the comment about the validity of [technique], as well as comments 3, 8, and 19} (now R3-W.1a--c, R3-S.3, R3-S.8 and R3-S.19).
+\end{enumerate}
+
+\subsubsection*{Response}
+
+This is a general response that is not part of a \texttt{\textbackslash{}response} command as shown below. The latter can only be used within an enumerated list.
+
+We summarize below a list of important changes we have made to the paper, based on the reviewers' comments:
+\begin{enumerate}
+	\item Summary of major changes...
+\end{enumerate}
+Several other minor improvements have also been made to the text, figures and figure captions. We do not list these in full.
+
+% --------------------------------------------------------------------------- %
+\section*{(R1) Responses to Reviewer 1}
+% --------------------------------------------------------------------------- %
+
+\tcg{Some general remarks made by R1 which do not need a separate response. R1 now begins a more detailed list of issues, or we take R1's remarks and convert it into an enumerated list, in which case we can add an author's note to say so.}
+
+(\textbf{Authors' note:}~We have divided this paragraph into points so as to be able to respond clearly)
+\begin{enumerate}[label=R1.\arabic*,leftmargin=*]
+	\item \tcb{Some useful remarks that R1 made, which the AE also pointed out. These are highlighted in blue using \texttt{\textbackslash{}tcb}.} \label{r1_comment1}
+		\response{Use the \texttt{\textbackslash{}response} command to start a response within an enumerated list. Unfortunately, you cannot have paragraph breaks inside this command.\\
+			\indnt Use a double-backslash \texttt{\textbackslash{}\textbackslash{}} followed by an \texttt{\textbackslash{}indnt} command to start a new paragraph instead, as shown here.
+			\begin{quotn}
+				Use a \texttt{\textbackslash{}quotn} environment to quote material from your paper. You can also append a line to show where it was quoted from, as seen here. \\ \-\hfill --- Section I-C
+			\end{quotn}
+		}
+
+	\item \tcg{Some other remark that R1 made, but which the AE didn't think was as important.} \label{r1_comment2}
+		\response{Note how the \texttt{label} attribute has been set for the \texttt{enumerate} environment, which automatically prepends ``R1.'' to each reference, e.g., this is R1's first comment: \ref{r1_comment1}. This requires the package \texttt{enumitem}.}
+\end{enumerate}
+
+\tcr{Things to take care of before submitting can be highlighted in red using \texttt{\textbackslash{}tcr}.}
+
+\bibliographystyle{unsrt}  % Unsorted
+\bibliography{references}
+
+\end{document}
